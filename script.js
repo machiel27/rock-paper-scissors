@@ -17,8 +17,6 @@ function playRound(playerSelection, computerSelection){
     let playerChoice = playerSelection.toLowerCase();
     let computerChoice = computerSelection.toLowerCase();
 
-    console.log(playerChoice);
-    
     if(playerChoice == "rock"){
         if(computerChoice == "rock"){
             return "It's a tie! You both chose Rock";
@@ -64,41 +62,30 @@ function playRound(playerSelection, computerSelection){
 
 }
 
-//console.log(playRound(playerSelection, computerSelection));
-
-function game() {
-    let computerSelection = "";
-    let playerSelection = "";
-    let roundResult = "";
-    // for (let i=0; i<5; i++){
-    //     playerSelection = prompt("What is your play?");
-    //     computerSelection = getComputerChoice();
-    //     roundResult = playRound(playerSelection, computerSelection);
-    //     console.log(roundResult);
-    // }
-    console.log("Player: ", playerScore);
-    console.log("Computer: ", computerScore);
-
-    if(playerScore > computerScore){
-        console.log("Congratulations, you win!");
-    }
-    else if(computerScore > playerScore){
-        console.log("Oh no!, the Computer won!");
-    }
-    else{
-        console.log("It's an overall tie");
-    }
-    
-
-}
-
 let playerOptions = document.querySelectorAll('button');
 
 playerOptions.forEach((button) => {
     button.addEventListener('click', () => {
         console.log(button.id);
-        playRound(button.id, getComputerChoice());
+        const resultText = document.querySelector('.resultText');
+        const playerDisplay = document.querySelector('.playerScore');
+        const computerDisplay = document.querySelector('.computerScore');
+        const finalDisplay = document.querySelector('.finalResult');
+        if(playerScore < 5 && computerScore < 5){
+            resultText.textContent = playRound(button.id, getComputerChoice());
+            playerDisplay.textContent = playerScore;
+            computerDisplay.textContent = computerScore;
+            if(playerScore == 5 || computerScore == 5){
+                if(playerScore > computerScore){
+                    finalDisplay.textContent = "Congratulations, you win the round! Reload the page to try again";
+                }
+                else if(computerScore > playerScore){
+                    finalDisplay.textContent = "Oh no!, the Computer won the round! Reload the page to try again";
+                }
+                else{
+                    finalDisplay.textContent = "It's an overall tie! Reload the page to try again";
+                }
+            }
+        }
     })
 });
-
-game();

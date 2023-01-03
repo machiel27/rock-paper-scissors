@@ -27,3 +27,35 @@ button{
     border-color: aliceblue;
     font-family: monospace;
 }
+
+.results{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+}
+
+.scoreBoard{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 50px;
+    padding: 24px;
+}
+
+.player{
+    font-size: 22px;
+}
+
+.computer{
+    font-size: 22px;
+}
+
+.resultText{
+    font-size: 20px;
+}
+
+.finalResult{
+    font-size: 20px;
+}
