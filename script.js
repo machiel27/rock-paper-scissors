@@ -16,6 +16,8 @@ function getRandomInt(max) {
 function playRound(playerSelection, computerSelection){
     let playerChoice = playerSelection.toLowerCase();
     let computerChoice = computerSelection.toLowerCase();
+
+    console.log(playerChoice);
     
     if(playerChoice == "rock"){
         if(computerChoice == "rock"){
@@ -68,12 +70,12 @@ function game() {
     let computerSelection = "";
     let playerSelection = "";
     let roundResult = "";
-    for (let i=0; i<5; i++){
-        playerSelection = prompt("What is your play?");
-        computerSelection = getComputerChoice();
-        roundResult = playRound(playerSelection, computerSelection);
-        console.log(roundResult);
-    }
+    // for (let i=0; i<5; i++){
+    //     playerSelection = prompt("What is your play?");
+    //     computerSelection = getComputerChoice();
+    //     roundResult = playRound(playerSelection, computerSelection);
+    //     console.log(roundResult);
+    // }
     console.log("Player: ", playerScore);
     console.log("Computer: ", computerScore);
 
@@ -89,5 +91,14 @@ function game() {
     
 
 }
+
+let playerOptions = document.querySelectorAll('button');
+
+playerOptions.forEach((button) => {
+    button.addEventListener('click', () => {
+        console.log(button.id);
+        playRound(button.id, getComputerChoice());
+    })
+});
 
 game();
